@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Riscos | PX Corretora</title>
+    <link rel="icon" type="image/png" href="/imagens/logofavicon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/diagnostico.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/sitedopai-main/testepx/styles/diagnostico.css">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid header-content">
+            <a href="/index.html">
+                <div class="logo">
+                    <img src="/imagens/logopxgrande.jpg" alt="">
+                    Corretora de Seguros
+                </div>
+            </a>
+            <div class="nav-cta-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/index.html">Consultoria</a></li>
+                        <li><a href="/index.html">Empresas</a></li>
+                        <li><a href="/index.html">Famílias</a></li>
+                        <li><a href="/index.html">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <div class="container-narrow">
+                <h1>Diagnóstico de Riscos</h1>
+                <h2>O primeiro passo para decisões mais conscientes em seguros e benefícios.</h2>
+                <p class="intro-text">
+                    Este diagnóstico é uma etapa inicial de análise técnica. Antes de qualquer recomendação estrutural,
+                    precisamos compreender o seu contexto, seus desafios atuais e o nível de exposição aos riscos.
+                </p>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <div class="container-narrow">
+                <div id="form-container" class="form-card">
+                    <form id="diagnosticoForm">
+                        <input type="text" name="empresa_site" tabindex="-1" autocomplete="off" style="display:none">
+
+
+                        <!-- BLOCO 1: Identificação -->
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Como prefere ser chamado?">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail Corporativo ou Pessoal *</label>
+                                <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp *</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Você representa:</label>
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="tipo_perfil" value="empresa"
+                                        onclick="toggleContext('empresa')" required> Uma Empresa (PME)
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="tipo_perfil" value="familia"
+                                        onclick="toggleContext('familia')"> Minha Família / Pessoa Física
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="contexto-empresa" class="hidden">
+                            <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--color-border);">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cnpj">CNPJ da Empresa *</label>
+                                    <input type="text" id="cnpj" name="cnpj" inputmode="numeric"
+                                        placeholder="00.000.000/0000-00" maxlength="18" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="colaboradores">Número aproximado de colaboradores</label>
+                                    <select id="colaboradores" name="colaboradores">
+                                        <option value="" selected disabled>Selecione uma faixa</option>
+                                        <option value="ate5">Até 5</option>
+                                        <option value="6-20">6 a 20</option>
+                                        <option value="21-50">21 a 50</option>
+                                        <option value="51-200">51 a 200</option>
+                                        <option value="201_mais">Acima de 200</option>
+                                    </select>
+                                </div>
+
+                                <div id="colaboradores-exato" class="form-group hidden">
+                                    <label for="qtde_exata">Número aproximado de colaboradores</label>
+                                    <input type="number" id="qtde_exata" name="qtde_exata" min="201">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Possui seguros ou benefícios ativos atualmente?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_e" value="sim">
+                                        Sim</label>
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_e" value="nao">
+                                        Não</label>
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_e" value="nao_sei">
+                                        Não sei informar</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="contexto-familia" class="hidden">
+                            <hr style="margin: 2rem 0; border: 0; border-top: 1px solid var(--color-border);">
+                            <div class="form-group">
+                                <label for="cidade_f">Cidade / Estado</label>
+                                <input type="text" id="cidade_f" name="cidade_f">
+                            </div>
+                            <div class="form-group">
+                                <label>Possui algum seguro ativo atualmente?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_f" value="sim">
+                                        Sim</label>
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_f" value="nao">
+                                        Não</label>
+                                    <label class="radio-item"><input type="radio" name="seguro_ativo_f" value="ja_tive">
+                                        Já tive, mas não no momento</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label>Qual tipo de orientação você busca neste momento?</label>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="saude"> Seguro
+                                    Saúde</label>
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="vida"> Seguro de
+                                    Vida</label>
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="patrimonial">
+                                    Seguro Patrimonial / Residencial</label>
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="auto"> Seguro
+                                    Automóvel</label>
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="cct"> Seguro de
+                                    Vida – CCT</label>
+                                <label class="checkbox-item"><input type="checkbox" name="apoio" value="orientacao">
+                                    Ainda não sei — preciso de orientação</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contexto_longo">Conte brevemente o que motivou você a buscar este diagnóstico ou
+                                quais são suas principais dúvidas hoje.</label>
+                            <textarea id="contexto_longo" name="contexto_longo" rows="4"
+                                placeholder="Ex: Mudança de contexto familiar, revisão de custos na empresa, busca por novos benefícios..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferencia">Como prefere ser contatado para a devolutiva?</label>
+                            <select id="preferencia" name="preferencia">
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="email">E-mail</option>
+                                <option value="ligacao">Ligação Telefônica</option>
+                            </select>
+                        </div>
+
+                        <input type="checkbox" id="aceiteTermos" name="aceiteTermos" value="sim" required>
+                        <label for="aceiteTermos">
+                            Declaro que li e concordo com os <a href="termos.html">Termos de Uso</a> e <a
+                                href="politicas.html">Politicas de Privacidade</a>, autorizando o tratamento dos meus
+                            dados para fins exclusivamente consultivos.
+                            <a href="politicas.html" target="_blank">
+                        </label>
+
+                        <input type="checkbox" id="consentimento" name="consentimento" required>
+                        <label for="consentimento">
+                            Autorizo o contato da PX Corretora de Seguros via WhatsApp e outros meios digitais,
+                            exclusivamente para fins consultivos, conforme
+                            <a href="politicas.html" target="_blank">Políticas de Privacidade</a>.
+                        </label>
+
+
+                        <br>
+
+                        <div class="privacy-note">
+                            As informações enviadas serão analisadas de forma confidencial e utilizadas exclusivamente
+                            para fins de orientação consultiva.
+                        </div>
+
+
+                        <button type="submit" class="btn-submit">Solicitar diagnóstico</button>
+                    </form>
+                </div>
+
+                <div id="success-message" class="hidden">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Recebemos suas informações.</h3>
+                    <p>
+                        Nossa equipe irá analisá-las criteriosamente e entrará em contato para compreender melhor o
+                        cenário antes de qualquer recomendação técnica.
+                    </p>
+                    <div style="margin-top: 2rem;">
+                        <a href="index.html" class="btn-back">Voltar à página inicial</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+   <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>PX Corretora de Seguros</h3>
+                    <p>Consultoria especializada em seguros e benefícios. Apoiamos o crescimento sustentável de negócios
+                        e famílias.</p>
+                    <br>
+                    <p>CNPJ 58.306.405/0001-32 | SUSEP - 252166074</p>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#consultoria">Consultoria</a></li>
+                        <li><a href="#empresas">Soluções Empresas</a></li>
+                        <li><a href="#familias">Soluções Famílias</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li>Corretora registrada na SUSEP</li>
+                        <li><a href="/Politicas-de-Privacidade">Política de Privacidade</a></li>
+                        <li><a href="/Termos/">Termos de Uso</a></li>
+                        <li>As informações deste site possuem caráter informativo e consultivo e não substituem análise
+                            técnica individual.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <a
+                    href="https://www.google.com/maps/place/R.+Maria+Carlota,+773+-+Vila+Esperan%C3%A7a,+S%C3%A3o+Paulo+-+SP,+03647-000/@-23.5283739,-46.5301826,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce5e3d1ab13431:0xae328fc1024a929d!8m2!3d-23.5283788!4d-46.5276077!16s%2Fg%2F11c19f5gy7?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoASAFQAw%3D%3D">
+                    <p>Endereço: Rua Maria Carlota, 773, Sala 88 - Vila Esperança - São Paulo - SP.</p>
+                </a>
+                <p>&copy; 2024 PX Corretora de Seguros. Todos os direitos reservados.</p>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.facebook.com/profile.php?id=100093191715569&rdid=svWqj45NHaXv0ik8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19GQVkVFTw%2F#" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/pxcorretoradeseguros/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/pedro-ferreira-xavier-60621228a/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    </main>
+    <script src="/js/diagnostico.js" defer></script>
+</body>
+
+</html>
